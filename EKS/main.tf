@@ -15,15 +15,15 @@ module "vpc" {
 
 
   tags = {
-    "kubernetes.io/cluster/my-eks-cluster" = "shared"
+    "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
   }
   public_subnet_tags = {
-    "kubernetes.io/cluster/my-eks-cluster" = "shared"
+    "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
     "kubernetes.io/role/elb"               = 1
 
   }
   private_subnet_tags = {
-    "kubernetes.io/cluster/my-eks-cluster" = "shared"
+    "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
     "kubernetes.io/role/private_elb"       = 1
 
   }
