@@ -24,7 +24,7 @@ module "vpc" {
   }
   private_subnet_tags = {
     "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
-    "kubernetes.io/role/internal_elb"       = 1
+    "kubernetes.io/role/private_elb"       = 1
 
   }
 }
