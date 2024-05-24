@@ -1,7 +1,7 @@
 data "aws_availability_zones" "azs" {}
 
 data "aws_eks_cluster" "cluster" {
-  name = "mayank-eks-cluster"  
+  name = module.eks.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster_auth" {
@@ -10,11 +10,11 @@ data "aws_eks_cluster_auth" "cluster_auth" {
 }
 
 output "eks_cluster_id" {
-  value = data.aws_eks_cluster.cluster.id
+  value = data.aws_eks_cluster.cluster_id
 }
 
 output "eks_cluster_name" {
-  value = data.aws_eks_cluster.cluster.name
+  value = data.aws_eks_cluster.cluster_name
 }
 
 
