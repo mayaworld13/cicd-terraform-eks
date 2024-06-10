@@ -15,16 +15,16 @@ module "vpc" {
 
 
   tags = {
-    "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
+    "kubernetes.io/cluster/mayank-eks1-cluster" = "shared"
   }
   public_subnet_tags = {
-    "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
+    "kubernetes.io/cluster/mayank-eks1-cluster" = "shared"
     "kubernetes.io/role/elb"               = 1
 
   }
   private_subnet_tags = {
-    "kubernetes.io/cluster/mayank-eks-cluster" = "shared"
-    "kubernetes.io/role/private_elb"       = 1
+    "kubernetes.io/cluster/mayank-eks1-cluster" = "shared"
+    "kubernetes.io/role/internal_elb"       = 1
 
   }
 }
@@ -34,7 +34,7 @@ module "vpc" {
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
-  cluster_name                   = "mayank-eks-cluster"
+  cluster_name                   = "mayank-eks1-cluster"
   cluster_version                = "1.29"
   cluster_endpoint_public_access = true
   vpc_id                         = module.vpc.vpc_id
