@@ -55,6 +55,25 @@ module "eks" {
   }
 }
 
+#eks access
+
+resource "aws_eks_access_entry" "example" {
+  cluster_name      = module.eks.cluster_name
+  principal_arn     = "arn:aws:iam::058264111519:user/mayank"
+  type              = "STANDARD"
+}
+
+# accesspolicy association
+
+resource "aws_eks_access_policy_association" "example" {
+  cluster_name  = module.eks.cluster_name
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+  principal_arn = "arn:aws:iam::058264111519:user/mayank"
+
+  access_scope {
+    type       = "cluster"
+  }
+}
 
 
 
