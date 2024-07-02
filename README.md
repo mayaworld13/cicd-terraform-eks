@@ -1,4 +1,19 @@
-# Jenkins Infrastructure on AWS using Terraform
+# Terraform Infrastructure for EKS Cluster and Jenkins on AWS
+
+This project sets up an EKS cluster and Jenkins server on AWS using Terraform. The process involves initially launching the Jenkins server locally, then using the Jenkins server to manage the EKS cluster and deploy an nginx server.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- AWS Account
+- AWS CLI configured with appropriate access
+- Terraform installed (v0.12+)
+- Jenkins installed and configured on an EC2 instance
+
+## Project Structure
+
+The project is divided into two main parts: the Jenkins setup and the EKS setup.
 
 This project provisions a complete infrastructure for Jenkins on AWS using Terraform. It includes a VPC, Security Group, and an EC2 instance running Jenkins.
 
