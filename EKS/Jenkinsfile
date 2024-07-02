@@ -1,0 +1,88 @@
+pipeline {
+    agent any
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        AWS_DEFAULT_REGION = 'ap-south-1'
+    }
+    stages{
+        stage('Checkout SCM'){
+            steps{
+                script{
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mayaworld13/cicd-terraform-eks.git']])
+                }
+            }
+        }
+        
+        stage('Initializing terraform'){
+            steps{
+                script{
+                    dir('EKS'){
+                        sh 'terraform init'
+                    }
+                }
+                
+            }
+        }
+        
+        stage('formatting terraform files'){
+            steps{
+                script{
+                    dir('EKS'){
+                        sh 'terraform fmt'
+                    }
+                }
+                
+            }
+        }
+        
+        stage('validating configeration'){
+            steps{
+                script{
+                    dir('EKS'){
+                        sh 'terraform validate'
+                    }
+                }
+                
+            }
+        }
+        
+        stage('terraform plan'){
+            steps{
+                script{
+                    dir('EKS'){
+                        sh 'terraform plan'
+                    }
+                    input(message: "Are you sure to proceed?", ok: "proceed")
+                }
+                
+                
+            }
+        }
+        
+        stage('creating EKS cluster'){
+            steps{
+                script{
+                    dir('EKS'){
+                        sh 'terraform $action --auto-approve'
+                    }
+                }
+                
+            }
+        }
+        
+        stage('Deploying nginx'){
+            steps{
+                script{
+                    dir('EKS'){
+                        sh 'aws eks update-kubeconfig --name mayank-eks-cluster'
+                        sh 'kubectl apply -f deployment.yml'
+                        sh 'kubectl apply -f service.yml'
+                    }
+                }
+                
+            }
+        }
+        
+    }    
+}
