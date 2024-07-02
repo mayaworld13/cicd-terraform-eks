@@ -70,7 +70,7 @@ This module creates an EC2 instance for Jenkins.
 
 Tags are added to help with identification and organization.
 
-## Usage
+##  Step 1: Jenkins setup
 
 1. **Clone the repository**:
    ```sh
@@ -102,3 +102,43 @@ Tags are added to help with identification and organization.
    ```sh
    terraform apply
    ```
+7. **Access Jenkins**
+
+After the apply command completes, note the public IP address of your Jenkins server from the Terraform output or the AWS EC2 console.
+Open your browser and navigate to `http://<public-ip>:8080`
+
+
+##  Step 2: Set up EKS Cluster using Jenkins
+
+ 1. **Create a new Jenkins Pipeline Job:**
+
+     - Open Jenkins
+     - Create a new pipeline job and manage or add the credentials
+
+ 2. **Copy the following Jenkinsfile content or run the pipeline script using scm in jenkins**
+ 3. **In the we are using parmeterized pipeline script as we have to apply or destroy  so here we use choices**
+
+    ![image](https://github.com/mayaworld13/cicd-terraform-eks/assets/127987256/29fa1e21-a108-48f1-aa6d-2e130fbb8ad5)
+
+ 4. **Run the Jenkins Pipeline:**
+
+    - Execute the pipeline to automate the EKS cluster deployment and manage Kubernetes resources.
+
+## Step 3: verification whether nginx server deployed or not
+
+  1. **terraform output give the dns of service or loadbalancer**
+  2. **Browse the dns in your browser**
+
+     ![image](https://github.com/mayaworld13/cicd-terraform-eks/assets/127987256/1e56fa80-79e1-4b20-b5ce-d3f9b2b85001)
+
+## Conclusion
+
+This setup automates the deployment of an EKS cluster and a Jenkins server on AWS using Terraform, and manages Kubernetes resources via Jenkins pipelines. Customize the configurations as per your requirements.
+
+  
+
+       
+       
+
+
+
