@@ -68,7 +68,7 @@ Tags are added to help with identification and organization.
    terraform init
    ```
 
-3.  **To structure the look and feel of terraform files**
+3. **To structure the look and feel of terraform files**
    ```sh
    terraform fmt
    ```
