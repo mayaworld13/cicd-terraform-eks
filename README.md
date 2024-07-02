@@ -124,6 +124,10 @@ Open your browser and navigate to `http://<public-ip>:8080`
 
     - Execute the pipeline to automate the EKS cluster deployment and manage Kubernetes resources.
 
+
+      ![image](https://github.com/mayaworld13/cicd-terraform-eks/assets/127987256/d0fcd2bc-87c6-40bd-a846-c61788cd6dfe)
+
+
 ## Step 3: verification whether nginx server deployed or not
 
   1. **terraform output give the dns of service or loadbalancer**
