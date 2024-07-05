@@ -1,6 +1,11 @@
+
 # Terraform Infrastructure for EKS Cluster and Jenkins on AWS
 
 This project sets up an EKS cluster and Jenkins server on AWS using Terraform. The process involves initially launching the Jenkins server locally, then using the Jenkins server to manage the EKS cluster and deploy an nginx server.
+
+
+![image](https://github.com/mayaworld13/cicd-terraform-eks/assets/127987256/29b5bb34-b9df-4b2f-b4e5-c843b93ee52c)
+
 
 ## Prerequisites
 
